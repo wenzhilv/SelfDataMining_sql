@@ -1,0 +1,4 @@
+INFO - access -  logging __init__
+INFO - access -  logging get_simple_logger
+INFO - access -  logging __del__
+INFO - access -  access connect ok
