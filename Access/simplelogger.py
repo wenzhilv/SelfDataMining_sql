@@ -24,7 +24,8 @@ class SimpleLogger:
         self.__logger.info("logging __init__")
 
     def __del__(self):
-        self.__logger.info("logging __del__")
+        # self.__logger.info("logging __del__")
+        pass
 
     def get_simple_logger(self):
         self.__logger.info("logging get_simple_logger")

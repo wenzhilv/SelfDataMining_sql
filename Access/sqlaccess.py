@@ -94,7 +94,7 @@ class SqlAccess:
         resql = "INSERT INTO %s (%s) VALUES (%s)" % (tablename, sqlfield, sqlval)
         return resql
 
-    def get_sql_insert_all(self, srctable, srcfields, desttable, destfields):
+    def get_sql_insert_all(self, desttable, destfields, srctable, srcfields):
         if len(srcfields) != len(destfields):
             errstr = "len(fieldsname) != len(fieldsval) in get_sql_insert_one"
             print(errstr)
@@ -102,11 +102,19 @@ class SqlAccess:
         sqlsrc = ""
         sqldest = ""
         for index in range(len(srcfields)):
-            sqlsrc = sqlsrc + ("[%s], " % srcfields[index])
-            sqldest = sqldest + ("[%s], " % destfields[index])
+            sqlsrc = sqlsrc + ("%s, " % srcfields[index])
+            sqldest = sqldest + ("%s, " % destfields[index])
         sqlsrc = sqlsrc[:-2]
         sqldest = sqldest[:-2]
         resql = " INSERT INTO %s (%s) SELECT %s FROM %s " % (srctable, sqlsrc, desttable, sqldest)
+        return resql
+
+    def get_sql_delete_where(self, tablename, wherestatement):
+        resql = "DELETE t.* FROM %s AS t WHERE (%s) " % (tablename, wherestatement)
+        return resql
+
+    def get_sql_delete(self, tablename):
+        resql = "DELETE * FROM %s" % tablename
         return resql
 
     def get_sql_select(self, fieldnames, tablename):

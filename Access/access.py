@@ -44,15 +44,21 @@ class Access:
             self.__acs_logger.error("%s is not exists" % dbpath, exc_info=True)
             raise RuntimeError('%s is not exists.' % (dbpath))
         self.__acs_logger.info("access connect ok")
+        self.__flag = False
 
     def __del__(self):
         print("access __del__")
-        # self.__acs_logger.info("access  start close")
-        if hasattr(self, '__dbconn__'):
-            self.__dbcur__.close()
-            self.__dbconn__.close()
-        # self.__acs_logger.info("access  close ok")
+        # self.dbclose()
+        if self.__flag:
+            pass
+        else:
+            self.dbclose()
         print('db close over.')
+
+    def dbclose(self):
+        self.__dbcur__.close()
+        self.__dbconn__.close()
+        self.__flag = True
 
     def sql_excute(self, sqlstatement):
         try:
@@ -198,7 +204,7 @@ if __name__ == '__main__':
     pass
     print('access class test')
     # dbpath = r'C:\lwz\softproject\py\data\testprocessxml\Local - process.mdb'
-    dbpath = r'C:\Users\202\Desktop\Gynecology Fetal kidney From Prof Zeng\Intermediate results\Local - new process.mdb'
+    dbpath = r'C:\lwz\softproject\py\data\testprocessxml\Local - process.mdb'
     objacs = Access(dbpath)
     sqlselect = "SELECT t.PatientId, t.VisitId, t.LsContent FROM PatientDischargeSummary AS t;"
     if not objacs.sql_excute(sqlselect):

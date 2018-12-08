@@ -1,58 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="77bbf413-8945-4a7a-8ea3-9fdb1bd65d7c" name="Default Changelist" comment="" />
+    <list default="true" id="77bbf413-8945-4a7a-8ea3-9fdb1bd65d7c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/access.py" beforeDir="false" afterPath="$PROJECT_DIR$/access.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/liu.py" beforeDir="false" afterPath="$PROJECT_DIR$/liu.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/simplelogger.py" beforeDir="false" afterPath="$PROJECT_DIR$/simplelogger.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sqlaccess.py" beforeDir="false" afterPath="$PROJECT_DIR$/sqlaccess.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="811823849">
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="py" value="6" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="Python" value="6" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="Python Console" value="469" />
+          <entry key="py" value="538" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="Python" value="1007" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/liu.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="88" column="75" selection-start-line="88" selection-start-column="75" selection-end-line="88" selection-end-column="75" />
-              <folding>
-                <element signature="e#1#23#0" expanded="true" />
-                <element signature="e#709#1219#0" />
-                <element signature="e#1260#1604#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/access.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="75" column="31" selection-start-line="75" selection-start-column="31" selection-end-line="75" selection-end-column="31" />
+            <state relative-caret-position="305">
+              <caret line="95" column="18" selection-start-line="95" selection-start-column="8" selection-end-line="95" selection-end-column="18" />
               <folding>
                 <element signature="e#1#11#0" expanded="true" />
-                <element signature="e#1345#1620#0" />
-                <element signature="e#1670#1930#0" />
-                <element signature="e#1980#2223#0" />
                 <element signature="e#2265#2436#0" />
-                <element signature="e#2478#2568#0" />
-                <element signature="e#2618#2883#0" />
-                <element signature="e#2933#3088#0" />
-                <element signature="e#3881#4822#1" />
-                <element signature="e#6213#6618#0" />
-                <element signature="e#7171#7462#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/e2eparserinput.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="32" column="43" lean-forward="true" selection-start-line="32" selection-start-column="23" selection-end-line="32" selection-end-column="43" />
-              <folding>
-                <element signature="e#90#112#0" expanded="true" />
+                <marker date="1544242013966" expanded="true" signature="1559:1655" ph="..." />
               </folding>
             </state>
           </provider>
@@ -61,20 +58,63 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sqlaccess.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="57" column="26" selection-start-line="57" selection-start-column="8" selection-end-line="57" selection-end-column="26" />
+            <state relative-caret-position="1408">
+              <caret line="103" column="28" selection-start-line="103" selection-start-column="28" selection-end-line="103" selection-end-column="28" />
               <folding>
-                <element signature="e#177#392#0" />
-                <element signature="e#458#1078#0" />
-                <element signature="e#181#768#0" />
-                <element signature="e#1020#1108#0" />
-                <element signature="e#1188#1299#0" />
-                <element signature="e#1377#2105#0" />
-                <element signature="e#2193#2748#0" />
-                <element signature="e#2811#3747#0" />
-                <element signature="e#3848#4788#0" />
-                <element signature="e#4875#4981#0" />
-                <element signature="e#5056#5416#0" />
+                <element signature="e#2564#3292#0" />
+                <marker date="1544241144421" expanded="true" signature="4142:4216" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/liu.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="55">
+              <caret line="123" column="37" lean-forward="true" selection-start-line="123" selection-start-column="11" selection-end-line="123" selection-end-column="37" />
+              <folding>
+                <element signature="e#1#23#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="247">
+              <caret line="1663" selection-start-line="1663" selection-end-line="1663" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://D:/Program Files (x86)/Python/Python36-32/Lib/codecs.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="308" selection-start-line="308" selection-end-line="308" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://D:/Program Files (x86)/Python/Python36-32/Lib/logging/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="993" selection-start-line="993" selection-end-line="993" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/simplelogger.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="506">
+              <caret line="23" column="25" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
+              <folding>
+                <element signature="e#1#15#0" expanded="true" />
+                <marker date="1544237427201" expanded="true" signature="906:915" ph="..." />
               </folding>
             </state>
           </provider>
@@ -97,7 +137,10 @@
       <find>sql_cur_fetchone</find>
       <find>error</find>
       <find>update</find>
+      <find>INSERT</find>
+      <find>del</find>
       <find>drop</find>
+      <find>[</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -111,14 +154,14 @@
         <option value="$PROJECT_DIR$/e2eparserinput.py" />
         <option value="$PROJECT_DIR$/simplelogger.py" />
         <option value="$PROJECT_DIR$/access.py" />
-        <option value="$PROJECT_DIR$/sqlaccess.py" />
         <option value="$PROJECT_DIR$/liu.py" />
+        <option value="$PROJECT_DIR$/sqlaccess.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="50" />
-    <option name="y" value="456" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="782" />
+    <option name="y" value="154" />
     <option name="width" value="1890" />
     <option name="height" value="960" />
   </component>
@@ -304,15 +347,15 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.169749" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17017913" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.39518413" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.41784704" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.39413682" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.4169381" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32956153" />
@@ -340,12 +383,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/access.py</url>
-          <line>198</line>
+          <line>204</line>
           <option name="timeStamp" value="17" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/liu.py</url>
-          <line>95</line>
+          <line>130</line>
           <option name="timeStamp" value="23" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -357,6 +400,31 @@
           <url>file://$PROJECT_DIR$/liu.py</url>
           <line>78</line>
           <option name="timeStamp" value="25" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/liu.py</url>
+          <line>131</line>
+          <option name="timeStamp" value="27" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/access.py</url>
+          <line>49</line>
+          <option name="timeStamp" value="32" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/liu.py</url>
+          <line>95</line>
+          <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/liu.py</url>
+          <line>109</line>
+          <option name="timeStamp" value="36" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/liu.py</url>
+          <line>123</line>
+          <option name="timeStamp" value="37" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -372,16 +440,6 @@
     <entry file="file://$PROJECT_DIR$/../../../Program Files/Python36/Lib/site-packages/Lib/site-packages/pypyodbc.py" />
     <entry file="file://$PROJECT_DIR$/../../../Program Files (x86)/Python36-32/Lib/codecs.py" />
     <entry file="file://D:/Program Files (x86)/Python/Python36-32/Lib/site-packages/pypyodbc.py" />
-    <entry file="file://$PROJECT_DIR$/simplelogger.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="23" column="44" selection-start-line="23" selection-start-column="44" selection-end-line="23" selection-end-column="44" />
-          <folding>
-            <element signature="e#1#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/access_fieldserial.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1150">
@@ -396,9 +454,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="56">
           <caret line="14" column="13" lean-forward="true" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-          <folding>
-            <element signature="e#1#35#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -412,61 +467,68 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../../../Program Files (x86)/Python36-32/Lib/codecs.py">
+    <entry file="file://$PROJECT_DIR$/../../../../Program Files (x86)/Python36-32/Lib/codecs.py" />
+    <entry file="file://D:/Program Files (x86)/Python/Python36-32/Lib/codecs.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="178">
-          <caret line="310" column="25" lean-forward="true" selection-start-line="310" selection-start-column="25" selection-end-line="310" selection-end-column="25" />
+        <state relative-caret-position="170">
+          <caret line="308" selection-start-line="308" selection-end-line="308" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/access.py">
+    <entry file="file://D:/Program Files (x86)/Python/Python36-32/Lib/logging/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="75" column="31" selection-start-line="75" selection-start-column="31" selection-end-line="75" selection-end-column="31" />
+        <state relative-caret-position="170">
+          <caret line="993" selection-start-line="993" selection-end-line="993" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/simplelogger.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="23" column="25" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
           <folding>
-            <element signature="e#1#11#0" expanded="true" />
-            <element signature="e#1345#1620#0" />
-            <element signature="e#1670#1930#0" />
-            <element signature="e#1980#2223#0" />
-            <element signature="e#2265#2436#0" />
-            <element signature="e#2478#2568#0" />
-            <element signature="e#2618#2883#0" />
-            <element signature="e#2933#3088#0" />
-            <element signature="e#3881#4822#1" />
-            <element signature="e#6213#6618#0" />
-            <element signature="e#7171#7462#0" />
+            <element signature="e#1#15#0" expanded="true" />
+            <marker date="1544237427201" expanded="true" signature="906:915" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="1663" selection-start-line="1663" selection-end-line="1663" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/liu.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="55">
+          <caret line="123" column="37" lean-forward="true" selection-start-line="123" selection-start-column="11" selection-end-line="123" selection-end-column="37" />
+          <folding>
+            <element signature="e#1#23#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/sqlaccess.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="57" column="26" selection-start-line="57" selection-start-column="8" selection-end-line="57" selection-end-column="26" />
+        <state relative-caret-position="1408">
+          <caret line="103" column="28" selection-start-line="103" selection-start-column="28" selection-end-line="103" selection-end-column="28" />
           <folding>
-            <element signature="e#177#392#0" />
-            <element signature="e#458#1078#0" />
-            <element signature="e#181#768#0" />
-            <element signature="e#1020#1108#0" />
-            <element signature="e#1188#1299#0" />
-            <element signature="e#1377#2105#0" />
-            <element signature="e#2193#2748#0" />
-            <element signature="e#2811#3747#0" />
-            <element signature="e#3848#4788#0" />
-            <element signature="e#4875#4981#0" />
-            <element signature="e#5056#5416#0" />
+            <element signature="e#2564#3292#0" />
+            <marker date="1544241144421" expanded="true" signature="4142:4216" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/liu.py">
+    <entry file="file://$PROJECT_DIR$/access.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="88" column="75" selection-start-line="88" selection-start-column="75" selection-end-line="88" selection-end-column="75" />
+        <state relative-caret-position="305">
+          <caret line="95" column="18" selection-start-line="95" selection-start-column="8" selection-end-line="95" selection-end-column="18" />
           <folding>
-            <element signature="e#1#23#0" expanded="true" />
-            <element signature="e#709#1219#0" />
-            <element signature="e#1260#1604#0" />
+            <element signature="e#1#11#0" expanded="true" />
+            <element signature="e#2265#2436#0" />
+            <marker date="1544242013966" expanded="true" signature="1559:1655" ph="..." />
           </folding>
         </state>
       </provider>

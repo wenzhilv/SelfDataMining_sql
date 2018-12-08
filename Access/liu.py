@@ -89,11 +89,48 @@ def get_NT_value(objdb):
     sqlgetNT = " UPDATE %s AS t SET t.%s = MID(t.%s, INSTR(t.%s, 'NT'), 8)" % (desttable, fieldNT, ntfield, ntfield)
     if not objdb.sql_update(sqlgetNT):
         RuntimeError("get_NT_value sql_update(sqlNT)")
+    pass
+
+
+def get_NT_value2(objdb):
+    fields = ['patientid', 'applyno', 'examdatetime', 'reportimpression', 'reportdescription', 'ExamItemStr']
+    ntsrcfield = 'reportdescription'
+    tablename = 'ExamInfo'
+    desttable = 'xExamInfoNT'
+    fieldNT = 'NTVal'
+    if objdb.sql_excute(("SELECT TOP 1 * FROM %s" % desttable)):
+        sqldrop = ObjSql.get_sql_drop_table(desttable)
+        objdb.sql_update(sqldrop)
+    else:
+        # RuntimeError("get_sql_drop_table(desttable)")
+        print(desttable+"is not exists")
+    sqlsel = ObjSql.serial_fields(fields, 't')
+    # sqlwhere = "t.ExamItemStr Like '*NT*'"
+    sqlNT = " SELECT %s INTO %s FROM %s AS t " % (sqlsel, desttable, tablename)
+    if not objdb.sql_update(sqlNT):
+        RuntimeError("get_NT_value sql_update(sqlNT)")
+    """
+    sqlntinsert = ObjSql.get_sql_insert_all(tablename, fields, desttable, fields)
+    if not objdb.sql_update(sqlntinsert):
+        RuntimeError("get_NT_value sql_update(sqlntinsert)")
+    """
+    sqlntdel = ObjSql.get_sql_delete_where(desttable, " t.ExamItemStr  Like \'*NT*\' ")
+    if not objdb.sql_update(sqlntdel):
+        RuntimeError("get_NT_value sql_update(sqlntinsert)")
+    sqladd = ObjSql.get_sql_add_field(desttable, fieldNT, 50)
+    if not objdb.sql_update(sqladd):
+        RuntimeError("get_sql_add_field(desttable, fieldNT, 50)")
+    sqlgetNT = " UPDATE %s AS t SET t.%s = MID(t.%s, INSTR(t.%s, \'NT\'), 8)" % (desttable, fieldNT, ntsrcfield, ntsrcfield)
+    if not objdb.sql_update(sqlgetNT):
+        RuntimeError("get_NT_value sql_update(sqlgetNT)")
+    pass
 
 
 if __name__ == '__main__':
     print('start liu')
-    dbsrc = r'C:\lwz\softproject\jl\项目\Gynecology Fetal kidney From Prof Zeng\python process\Localsrctmp.mdb'
+    dbsrc = r"D:\lwz\softproject\py\process data\fck-trszyc\python process\Localsrctmp.mdb"
     objDB = Access(dbsrc)
-    get_NT_value(objDB)
+    # get_NT_value(objDB)
+    get_NT_value2(objDB)
+    objDB.dbclose()
     print('end liu')
