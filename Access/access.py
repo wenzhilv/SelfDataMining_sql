@@ -84,6 +84,7 @@ class Access:
         try:
             return self.__dbcur__.fetchall()
         except:
+            self.__acs_logger.error(" error in sql_cur_fetchall", exc_info=True)
             return False
 
     def sql_update(self, sqlstatement):
@@ -92,7 +93,7 @@ class Access:
             self.__dbconn__.commit()
             return True
         except:
-            self.__acs_logger.error(" error in sql_update")
+            self.__acs_logger.error(" error in sql_update", exc_info=True)
             self.__acs_logger.error(sqlstatement)
             return False
 
@@ -102,6 +103,8 @@ class Access:
             self.__dbconn__.commit()
             return True
         except:
+            self.__acs_logger.error(" error in sql_insert", exc_info=True)
+            self.__acs_logger.error(sqlstatement)
             return False
 
     def sql_delete(self, sqlstatement):
@@ -110,6 +113,8 @@ class Access:
             self.__dbconn__.commit()
             return True
         except:
+            self.__acs_logger.error(" error in sql_delete", exc_info=True)
+            self.__acs_logger.error(sqlstatement)
             return False
 
     def sql_validation(self, sqlstatement):
@@ -122,6 +127,8 @@ class Access:
             self.__dbcur__.execute(sqlstatement)
             return True
         except:
+            self.__acs_logger.error(" error in sql_validation", exc_info=True)
+            self.__acs_logger.error(sqlstatement)
             return False
 
     def sql_serial(self, srcInfoTableField, srcResTableField, srcResValField, srcResUnitField, srcResRange):
@@ -159,7 +166,6 @@ class Access:
         srcValueInInfoCause = srcInfoTableField[2]
         self._sql_serial_ptr_validationSrcInfoTableField(srcTableName, srcNoFieldName, srcInfoCauseFieldName)
 
-
     def _sql_serial_ptr_validationSrcInfoTableField(self, tablename, nofieldname, infofieldname):
         self.__acs_logger.info("start validationSrcInfoTableField")
         sqlstatement = r"SELECT TOP 1  %s, %s FROM %s;" % (nofieldname, infofieldname, tablename)
@@ -170,7 +176,6 @@ class Access:
             return False
         self.__acs_logger.info("sql validation ok")
         return True
-
 
     def get_row_val(self, row, field):
         """

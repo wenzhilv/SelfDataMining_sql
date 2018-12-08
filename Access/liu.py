@@ -1,8 +1,11 @@
 
 import xmlfordischarge
-import access
+from access import Access
 import os
 import traceback
+from sqlaccess import SqlAccess
+
+ObjSql = SqlAccess()
 
 JLSTRUCTFIELD = {}
 JLSTRUCTFIELD['就诊卡号'] = r'patientid'
@@ -39,7 +42,6 @@ def get_sql_select(fieldnames, tablename):
     sqlstatement = "SELECT " + sqlselect + sqlfrom
     return sqlstatement
 
-
 def get_row_val(self, row, field):
     """
     :param row:
@@ -57,7 +59,6 @@ def get_row_val(self, row, field):
         traceback.print_exc()
         return False
 
-
 def first_abnorm_us(dbcur):
     tfield = []
     tfield.append(JLSTRUCTFIELD['就诊卡号'])
@@ -66,8 +67,33 @@ def first_abnorm_us(dbcur):
     sqlstatement = get_sql_select(tfield, JLSTRUCTTABLE['检查信息'])
     print(sqlstatement)
 
+def get_NT_value(objdb):
+    fields = ['patientid', 'applyno', 'examdatetime', 'reportimpression', 'reportdescription']
+    ntfield = ['reportimpression']
+    tablename = 'ExamInfo'
+    desttable = 'xExamInfoNT'
+    fieldNT = 'NTVal'
+    sqlsel = ObjSql.serial_fields(fields, 't')
+    sqlwhere = "t.ExamItemStr Like '*NT*'"
+    sqlNT = " SELECT %s INTO %s FROM %s AS t WHERE (%s)" % (sqlsel, desttable, tablename, sqlwhere)
+    if objdb.sql_excute(("SELECT TOP 1 * FROM %s" % desttable)):
+        sqldrop = ObjSql.get_sql_drop_table(desttable)
+        objdb.sql_update(sqldrop)
+    else:
+        RuntimeError("get_sql_drop_table(desttable)")
+    if not objdb.sql_update(sqlNT):
+        RuntimeError("get_NT_value sql_update(sqlNT)")
+    sqladd = ObjSql.get_sql_add_field(desttable, fieldNT, 50)
+    if not objdb.sql_update(sqladd):
+        RuntimeError("get_sql_add_field(desttable, fieldNT, 50)")
+    sqlgetNT = " UPDATE %s AS t SET t.%s = MID(t.%s, INSTR(t.%s, 'NT'), 8)" % (desttable, fieldNT, ntfield, ntfield)
+    if not objdb.sql_update(sqlgetNT):
+        RuntimeError("get_NT_value sql_update(sqlNT)")
+
 
 if __name__ == '__main__':
     print('start liu')
-    first_abnorm_us('sadas')
+    dbsrc = r'C:\lwz\softproject\jl\项目\Gynecology Fetal kidney From Prof Zeng\python process\Localsrctmp.mdb'
+    objDB = Access(dbsrc)
+    get_NT_value(objDB)
     print('end liu')

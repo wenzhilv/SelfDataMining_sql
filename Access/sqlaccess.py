@@ -9,6 +9,35 @@ class SqlAccess:
     def __del__(self):
         pass
 
+    def serial_fields(self, fields, tablename):
+        """
+        :param fields:
+        :param tablename:
+        :return: tablename.fields
+        """
+        if fields is None or tablename is None:
+            return False
+        resql = ""
+        for fs in fields:
+            resql = resql + ("%s.%s, " % (tablename, fs))
+        resql = resql[:-2]
+        return resql
+
+    def serial_and_fields(self, fieldsa, valsa, fieldsb, valsb):
+        if fieldsa is None or valsa is None or fieldsb is None or valsb is None:
+            errstr = "None in serial_where_fields"
+            print(errstr)
+            return False
+        if len(fieldsa) != len(valsa) or len(valsa) != len(fieldsb) or len(fieldsb) != len(valsb):
+            errstr = "len(fieldsa) != len(valsa) in serial_where_fields"
+            print(errstr)
+            return False
+        resql = ""
+        for index in range(len(fieldsa)):
+            resql = resql + ("%s.%s = %s.%s AND " % (fieldsa[index], valsa[index], fieldsb[index], valsb[index]))
+        resql = resql[:-4]
+        return resql
+
     def get_sql_creat_table(self, fieldsname, fieldsstrlen):
         """
         :param fieldsname:
@@ -24,6 +53,10 @@ class SqlAccess:
             sqlfields = sqlfields + (" %s TEXT(%d), " % (fieldsname[index], fieldsstrlen[index]))
         sqlfields = sqlfields[:-2]
         resql = " CREATE TABLE tblCustomers %s " % sqlfields
+        return resql
+
+    def get_sql_drop_table(self, tablename):
+        resql = "DROP TABLE %s " % tablename
         return resql
 
     def get_sql_add_field(self, tablename, fieldname, fieldstrlen):
@@ -102,6 +135,11 @@ class SqlAccess:
         sqlstatement = "SELECT " + sqlselect + sqlfrom
         return sqlstatement
 
+    def get_sql_selectinto(self, srctable, srcfields, desttablename):
+
+        resql = " SELECT %s INTO %s FROM %s WHERE (%s) " % ()
+        return resql
+
     def get_sql_innerjoin(self, fieldnames, fromtable, jointable, formfields, joinfields):
         if fieldnames is None or fromtable is None or jointable is None or formfields is None or joinfields is None:
             errstr = "argus in get_sql_innerjoin have None"
@@ -133,6 +171,25 @@ class SqlAccess:
         sqlsel = self.get_sql_select(showfields, table)
         sqlon = " t.PatientId = m.PatientId AND CDATE(t.%s) = m.maxDateTime " % timefield
         resql = self.get_sql_innerjoin_str(sqlsel, sqljoin, sqlon)
+        return resql
+
+    def get_sql_update(self, tablename, setfield, setval, wherefields, wherevals):
+        if len(wherefields) != len(wherevals):
+            errstr = "len(wherefields) != len(wherevals) get_sql_update"
+            print(errstr)
+            return False
+        if tablename is None or setfield is None or setval is None or wherefields is None or wherevals is None:
+            errstr = "None get_sql_update"
+            print(errstr)
+            return False
+        # UPDATE PatientDischargeSummary AS t SET t.LsContent = \'%s\' WHERE
+        setval = setval.replace("\'", "\"")
+        setstr = " t.%s = \'%s\' " % (setfield, setval)
+        sherestr = ""
+        for index in range(wherefields):
+            sherestr = sherestr + ("t.%s = \'%s\' AND " % (wherefields[index], wherevals[index]))
+        sherestr = sherestr[:-4]
+        resql = " UPDATE %s AS t SET %s WHERE (%s) " % (tablename, setstr, sherestr)
         return resql
 
 
