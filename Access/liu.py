@@ -4,6 +4,7 @@ from access import Access
 import os
 import traceback
 from sqlaccess import SqlAccess
+from xmlfordischarge import XmlParseString
 
 ObjSql = SqlAccess()
 
@@ -112,7 +113,7 @@ def get_NT_value2(objdb):
     if not objdb.sql_update(sqlNT):
         # RuntimeError("get_NT_value sql_update(sqlNT)")
         RunError(objdb, "error sql_update(sqlNT)")
-    sqlntdel = ObjSql.get_sql_delete_where(desttable, " t.ExamItemStr  NOT LIKE \'*NT*\' ")
+    sqlntdel = ObjSql.get_sql_delete_where(desttable, " t.ExamItemStr  NOT LIKE \'%NT%\' ")
     if not objdb.sql_update(sqlntdel):
         # RuntimeError("get_NT_value sql_update(sqlntinsert)")
         RunError(objdb, "get_NT_value sql_update(sqlntinsert)")
@@ -121,9 +122,33 @@ def get_NT_value2(objdb):
         # RuntimeError("get_sql_add_field(desttable, fieldNT, 50)")
         RunError(objdb, "get_sql_add_field(desttable, fieldNT, 50)")
     sqlgetNT = " UPDATE %s AS t SET t.%s = MID(t.%s, INSTR(t.%s, \'NT\'), 8)" % (desttable, fieldNT, ntsrcfield, ntsrcfield)
+    sqlgetNT += (" WHERE t.%s LIKE \'%%NT%%\'" % ntsrcfield)
     if not objdb.sql_update(sqlgetNT):
         # RuntimeError("get_NT_value sql_update(sqlgetNT)")
         RunError(objdb, "get_NT_value sql_update(sqlgetNT)")
+    pass
+
+
+def get_NT_value3(objdb):
+    # fields = ['patientid', 'applyno', 'examdatetime', 'reportimpression', 'reportdescription', 'ExamItemStr']
+    fields = ['patientid', 'applyno', 'examdatetime', 'reportimpression', 'reportdescription']
+    ntsrcfield = 'reportdescription'
+    tablename = 'ExamInfo'
+    desttable = 'xExamInfoNT'
+    fieldNT = 'NTVal'
+    if objdb.sql_excute(("SELECT TOP 1 * FROM %s" % desttable)):
+        sqldrop = ObjSql.get_sql_drop_table(desttable)
+        objdb.sql_update(sqldrop)
+    else:
+        print(desttable+"is not exists")
+
+    sqlsel = ObjSql.serial_fields(fields, 't')
+    sqlNT1 = " SELECT %s, MID(t.%s, INSTR(t.%s, \'NT\'), 9) AS %s INTO %s FROM %s AS t " % (sqlsel, ntsrcfield, ntsrcfield, fieldNT, desttable, tablename)
+    sqlNT2 = " WHERE ( t.%s LIKE \'%%NT%%\' AND t.%s LIKE \'%%NT%%\') " % ('ExamItemStr', ntsrcfield)
+    sqlNT = sqlNT1 + sqlNT2
+    if not objdb.sql_update(sqlNT):
+        # RuntimeError("get_NT_value sql_update(sqlNT)")
+        RunError(objdb, "error sql_update(sqlNT)")
     pass
 
 
@@ -132,11 +157,23 @@ def RunError(objdb, str):
     RuntimeError("get_NT_value sql_update(sqlgetNT)")
 
 
+def get_ntAndapgar_Discharge(objdb):
+    """
+    get information from dischargesummary, NT and apgar score
+    :param objdb:
+    :return:
+    """
+    # objxml = xmlfordischarge.XmlParseString(row['lscontent'])
+
+
+
+
 if __name__ == '__main__':
     print('start liu')
-    dbsrc = r"D:\lwz\softproject\py\process data\fck-trszyc\python process\Localsrctmp.mdb"
+    dbsrc = r"C:\lwz\softproject\jl\项目\Gynecology Fetal kidney From Prof Zeng\python process\Localsrctmp.mdb"
     objDB = Access(dbsrc)
     # get_NT_value(objDB)
-    get_NT_value2(objDB)
+    # get_NT_value2(objDB)
+    get_NT_value3(objDB)
     objDB.dbclose()
     print('end liu')

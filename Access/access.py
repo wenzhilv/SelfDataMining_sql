@@ -56,9 +56,12 @@ class Access:
         print('db close over.')
 
     def dbclose(self):
-        self.__dbcur__.close()
-        self.__dbconn__.close()
-        self.__flag = True
+        if self.__flag:
+            pass
+        else:
+            self.__dbcur__.close()
+            self.__dbconn__.close()
+            self.__flag = True
 
     def sql_excute(self, sqlstatement):
         try:
