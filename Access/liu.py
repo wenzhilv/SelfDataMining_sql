@@ -112,7 +112,7 @@ def get_NT_value2(objdb):
     if not objdb.sql_update(sqlNT):
         # RuntimeError("get_NT_value sql_update(sqlNT)")
         RunError(objdb, "error sql_update(sqlNT)")
-    sqlntdel = ObjSql.get_sql_delete_where(desttable, " t.ExamItemStr  LIKE \'*NT*\' ")
+    sqlntdel = ObjSql.get_sql_delete_where(desttable, " t.ExamItemStr  NOT LIKE \'*NT*\' ")
     if not objdb.sql_update(sqlntdel):
         # RuntimeError("get_NT_value sql_update(sqlntinsert)")
         RunError(objdb, "get_NT_value sql_update(sqlntinsert)")
@@ -134,7 +134,7 @@ def RunError(objdb, str):
 
 if __name__ == '__main__':
     print('start liu')
-    dbsrc = r"C:\lwz\softproject\jl\项目\Gynecology Fetal kidney From Prof Zeng\python process\Localsrctmp.mdb"
+    dbsrc = r"D:\lwz\softproject\py\process data\fck-trszyc\python process\Localsrctmp.mdb"
     objDB = Access(dbsrc)
     # get_NT_value(objDB)
     get_NT_value2(objDB)
