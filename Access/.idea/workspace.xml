@@ -2,17 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="77bbf413-8945-4a7a-8ea3-9fdb1bd65d7c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Gynecology Fetal kidney From Prof Zeng.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Gynecology Fetal kidney From Prof Zeng.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/liu.py" beforeDir="false" afterPath="$PROJECT_DIR$/liu.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/acslog20181205204411.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/acslog20181205204513.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/acslog20181205204607.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/acslog20181205204742.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/acslog20181205204853.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/acslog20181205205040.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/log/acslog20181207100907.log" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -49,8 +39,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/liu.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="130" column="4" selection-start-line="130" selection-start-column="4" selection-end-line="130" selection-end-column="19" />
+            <state relative-caret-position="395">
+              <caret line="135" column="22" selection-start-line="135" selection-start-column="22" selection-end-line="135" selection-end-column="22" />
               <folding>
                 <element signature="e#1#23#0" expanded="true" />
               </folding>
@@ -121,7 +111,7 @@
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="780" />
-    <option name="y" value="151" />
+    <option name="y" value="150" />
     <option name="width" value="1890" />
     <option name="height" value="960" />
   </component>
@@ -308,6 +298,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.169749" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -454,8 +445,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/liu.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="130" column="4" selection-start-line="130" selection-start-column="4" selection-end-line="130" selection-end-column="19" />
+        <state relative-caret-position="395">
+          <caret line="135" column="22" selection-start-line="135" selection-start-column="22" selection-end-line="135" selection-end-column="22" />
           <folding>
             <element signature="e#1#23#0" expanded="true" />
           </folding>
