@@ -164,16 +164,35 @@ def get_ntAndapgar_Discharge(objdb):
     :return:
     """
     # objxml = xmlfordischarge.XmlParseString(row['lscontent'])
+    fields = ['patientid', 'visitid', 'LsContent']
+    tablename = r'PatientDischargeSummary'
+    fieldinstr = 'LsContent'
+    fielddestinstr = 'InState'
+    fieldApgar = 'ApgarScore'
+    apgarstart = '<InState'
+    apgarend = '</InState>'
+    desttable = 'xDischarge'
+    if objdb.sql_excute(("SELECT TOP 1 * FROM %s" % desttable)):
+        sqldrop = ObjSql.get_sql_drop_table(desttable)
+        objdb.sql_update(sqldrop)
+    else:
+        print("xDischarge is not exists")
+    sqlsel = ObjSql.serial_fields(fields, 't')
 
-
+    sqlinstrstart = " INSTR(t.%s, \'%s\') " % (fieldinstr, apgarstart)
+    sqlinstrend = " INSTR(t.%s, \'%s\') " % (fieldinstr, apgarend)
+    sqlapgarmid = " MID(t.%s, %s+28, (%s-%s)) " % (fieldinstr, sqlinstrstart, sqlinstrend, sqlinstrstart)
+    sqlApgar = " SELECT %s, %s AS %s INTO %s FROM %s AS t  WHERE ( %s <> 0)" % (sqlsel, sqlapgarmid, fielddestinstr, desttable, tablename, sqlinstrstart)
+    if not objdb.sql_update(sqlApgar):
+        # RuntimeError("(sqlApgar)")
+        RunError(objdb, "(sqlntinsert)")
 
 
 if __name__ == '__main__':
     print('start liu')
-    dbsrc = r"C:\lwz\softproject\jl\项目\Gynecology Fetal kidney From Prof Zeng\python process\Localsrctmp.mdb"
+    dbsrc = r"D:\lwz\softproject\py\process data\fck-trszyc\python process\Localsrctmp.mdb"
     objDB = Access(dbsrc)
-    # get_NT_value(objDB)
-    # get_NT_value2(objDB)
-    get_NT_value3(objDB)
+    # get_NT_value3(objDB)
+    get_ntAndapgar_Discharge(objDB)
     objDB.dbclose()
     print('end liu')
