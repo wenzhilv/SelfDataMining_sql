@@ -1,5 +1,4 @@
 
-import xmlfordischarge
 from access import Access
 import os
 import traceback
@@ -186,6 +185,85 @@ def get_ntAndapgar_Discharge(objdb):
     if not objdb.sql_update(sqlApgar):
         # RuntimeError("(sqlApgar)")
         RunError(objdb, "(sqlntinsert)")
+
+def get_NTAndapgar_Discharge(objdb):
+    """
+    get information from dischargesummary, NT and apgar score
+    :param objdb:
+    :return:
+    """
+    # objxml = xmlfordischarge.XmlParseString(row['lscontent'])
+    fields = ['patientid', 'visitid', 'LsContent']
+    tablename = r'PatientDischargeSummary'
+    fieldsrc = 'LsContent'
+    fielddestinstate = 'InState'
+    fielddestoutstate = 'OutState'
+    fielddestApgar = 'Apgar'
+    fielddestNT = 'NTVal'
+    tagname = 'InState'
+    desttable = 'xDischargeSummary'
+    resbase = " 入院情况及诊疗过程:\n %s"
+    # objxml = xmlfordischarge.XmlParseString(row['lscontent'])
+    sqls = "SELECT TOP 1 t.* FROM %s " % desttable
+    if objdb.sql_excute(sqls):
+        sqls = ObjSql.get_sql_drop_table(desttable)
+        if not objdb.sql_update(sqls):
+            errstr = " %s error " % sqls
+            RunError(objdb, errstr)
+    sqls = ObjSql.get_sql_selectinto(tablename, ['patientid', 'visitid'], desttable)
+    if not objdb.sql_update(sqls):
+        errstr = " %s error " % sqls
+        RunError(objdb, errstr)
+    sqls = ObjSql.get_sql_add_field(desttable, fielddestinstate, 255)
+    if not objdb.sql_update(sqls):
+        errstr = " %s error " % sqls
+        RunError(objdb, errstr)
+    sqls = ObjSql.get_sql_add_field(desttable, fielddestoutstate, 255)
+    if not objdb.sql_update(sqls):
+        errstr = " %s error " % sqls
+        RunError(objdb, errstr)
+    sqls = ObjSql.get_sql_add_field(desttable, fielddestApgar, 50)
+    if not objdb.sql_update(sqls):
+        errstr = " %s error " % sqls
+        RunError(objdb, errstr)
+    sqls = ObjSql.get_sql_add_field(desttable, fielddestNT, 50)
+    if not objdb.sql_update(sqls):
+        errstr = " %s error " % sqls
+        RunError(objdb, errstr)
+    sqls = ObjSql.get_sql_select(tablename, fields)
+    if not objdb.sql_excute(sqls):
+        errstr = " %s error " % sqls
+        RunError(objdb, errstr)
+    rowsdischarge = objdb.sql_cur_fetchall()
+    if isinstance(rowsdischarge, bool):
+        errstr = " isinstance(rowsdischarge, bool): "
+        RunError(objdb, errstr)
+    for row in rowsdischarge:
+        objxml = XmlParseString(row['lscontent'])
+        xmlin = objxml.getFirstTagString(fielddestinstate)
+        instr = resbase % xmlin
+        finstr = resbase % instr
+        foutstr = "出院情况：\n %s" % objxml.getFirstTagString(fielddestoutstate)
+        sqls = ObjSql.get_sql_update(desttable, fielddestinstate, finstr, ['patientid', 'visitid'], [row['patientid'], row['visitid']])
+        if not objdb.sql_update(sqls):
+            errstr = " %s error " % sqls
+            RunError(objdb, errstr)
+        sqls = ObjSql.get_sql_update(desttable, fielddestoutstate, foutstr, ['patientid', 'visitid'],
+                                     [row['patientid'], row['visitid']])
+        if not objdb.sql_update(sqls):
+            errstr = " %s error " % sqls
+            RunError(objdb, errstr)
+        sqls = ObjSql.get_sql_update(desttable, fielddestApgar, *, ['patientid', 'visitid'],
+                                     [row['patientid'], row['visitid']])
+        if not objdb.sql_update(sqls):
+            errstr = " %s error " % sqls
+            RunError(objdb, errstr)
+        sqls = ObjSql.get_sql_update(desttable, fielddestNT, *, ['patientid', 'visitid'],
+                                     [row['patientid'], row['visitid']])
+        if not objdb.sql_update(sqls):
+            errstr = " %s error " % sqls
+            RunError(objdb, errstr)
+
 
 
 if __name__ == '__main__':

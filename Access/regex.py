@@ -13,6 +13,7 @@ TABLENAME = {}
 TABLENAME['深圳二医院'] = 'xExam_SZ'
 TABLENAME['襄阳'] = 'xExam_XY'
 TABLENAME['浙江大学'] = 'xExam_ZD'
+TABLENAME['武汉中心医院'] = 'xExam_WHZXYY'
 TABLENAME['中山附一'] = ''
 HOSPITALNAME = {}
 HOSPITALNAME['深圳二医院'] = r'K:\JL\图像\zsq\深圳二医院\Images\*\SC'
@@ -179,10 +180,68 @@ def copy_applyno_match_ZD(dbpath, hospitname, imgdir, destdir):
         if 0 == (allcnt % 100):
             print(allcnt)
     objDB.dbclose()
-    tstr = "empty file %d, no file %d, have file %d, allfile %d" % (emptycnt, nofilecnt, cnt, allcnt)
+    tstr = "no file %d, empty file %d, have file %d, allfile %d" % (emptycnt, nofilecnt, cnt, allcnt)
     regexlog.info(tstr)
     print(tstr)
 
+
+def copy_img_match(dbpath, hospitname, srcfield, imgdir, destdir):
+    ObjSql = SqlAccess()
+    objDB = Access(dbpath)
+    # dirs = glob.glob
+    sqls = r" SELECT DISTINCT t.%s FROM %s AS t " % (srcfield, TABLENAME[hospitname])
+    paths = ""
+    if not objDB.sql_excute(sqls):
+        RunError(objDB, sqls)
+    emptycnt = 0
+    nofilecnt = 0
+    cnt = 0
+    allcnt = 0
+    while True:
+        allcnt += 1
+        row = objDB.sql_cur_fetchone()
+        if not row:
+            print("error in row")
+            break
+        applynostr = row[0]
+        dirs = os.path.join(imgdir, applynostr)
+        paths = glob.glob(dirs)
+        if len(paths) == 0 or len(paths) == 2:
+            tstr = " %s not exist or multipy %d" % (dirs, len(paths))
+            print(tstr)
+            s1 = tstr.encode("utf-8")
+            # regexlog.info(s1)
+            regexlog.info("%s not or multipy" % applynostr)
+            emptycnt += 1
+            continue
+
+        if 0 == len(os.listdir(paths[0])):
+            tstr ="%s have no file" % paths[0]
+            print(tstr)
+            s1 = tstr.encode("utf-8")
+            # regexlog.info(s1)
+            regexlog.info("%s null" % applynostr)
+            nofilecnt += 1
+            continue
+        else:
+            tstr = " %s have files " % paths[0]
+            s1 = tstr.encode("utf-8")
+            # regexlog.info(s1)
+            regexlog.info("%s ok" % applynostr)
+            cnt += 1
+            srcpath = paths[0]
+            destpath = os.path.join(destdir, applynostr)
+            if os.path.isdir(destpath):
+                logtime = time.strftime("%Y%m%d%H%M%S", time.localtime(time.time()))
+                destpath += '_' + logtime
+                regexlog.info(destpath)
+            shutil.copytree(srcpath, destpath)
+        if 0 == (allcnt % 100):
+            print(allcnt)
+    objDB.dbclose()
+    tstr = "no file %d, empty file %d, have file %d, allfile %d" % (emptycnt, nofilecnt, cnt, allcnt)
+    regexlog.info(tstr)
+    print(tstr)
 
 def RunError(objdb, err):
     objdb.dbclose()
@@ -234,6 +293,33 @@ def cp_sz():
     srccpdir = r'D:\lwz\onedrive\工作\相关公司网络产品\JL-tmp20181126\project\fck-zeng\图像\深圳二医院\Images\*\SC'
     destcpdir = r"H:\lwz\JL\project\image\fck-zsq\dest\shenzhen"
     copy_applyno_match_ZD(dbpath, hospitname, srccpdir, destcpdir)
+
+
+def cp_whzxyy_newpacs():
+    hospitname = '武汉中心医院'
+    dbpath = r"D:\lwz\onedrive\工作\相关公司网络产品\JL-tmp20181126\project\fck-zeng\提取\Local-zeng.mdb"
+    srccpdir = r'D:\lwz\onedrive\工作\相关公司网络产品\JL-tmp20181126\project\fck-zeng\图像\武汉中心医院\whzxyy\newpacs_US_img'
+    destcpdir = r"H:\lwz\JL\project\image\fck-zsq\dest\whzxyy\newpacs"
+    srcfield = 'patientid'
+    copy_img_match(dbpath, hospitname, srcfield, srccpdir, destcpdir)
+
+
+def cp_whzxyy_oldpacs():
+    hospitname = '武汉中心医院'
+    dbpath = r"D:\lwz\onedrive\工作\相关公司网络产品\JL-tmp20181126\project\fck-zeng\提取\Local-zeng.mdb"
+    srccpdir = r'D:\lwz\onedrive\工作\相关公司网络产品\JL-tmp20181126\project\fck-zeng\图像\武汉中心医院\whzxyy\oldpacs_US_img'
+    destcpdir = r"H:\lwz\JL\project\image\fck-zsq\dest\whzxyy\oldpacs"
+    srcfield = 'patientid'
+    copy_img_match(dbpath, hospitname, srcfield, srccpdir, destcpdir)
+
+def cp_xy_new():
+    hospitname = '襄阳'
+    dbpath = r"D:\lwz\onedrive\工作\相关公司网络产品\JL-tmp20181126\project\fck-zeng\提取\Local-zeng.mdb"
+    srccpdir = r'D:\lwz\onedrive\工作\相关公司网络产品\JL-tmp20181126\project\fck-zeng\图像\襄阳\abnormal\Image'
+    destcpdir = r"H:\lwz\JL\project\image\fck-zsq\dest\xiangyang\abnormal"
+    # copy_applyno_match_ZD(dbpath, hospitname, srccpdir, destcpdir)
+    srcfield = 'accessnum'
+    copy_img_match(dbpath, hospitname, srcfield, srccpdir, destcpdir)
 
 
 if __name__ == '__main__':
